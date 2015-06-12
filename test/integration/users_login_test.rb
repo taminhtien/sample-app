@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
+  def setup
+    @user = users(:tien)
+  end
+
   # This test is in order to control the emergence of the flash
   test "login with invalid information" do
   	# Visit login path
@@ -17,5 +21,19 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   	get root_path
   	# Verify the flash doesn't appear
   	assert flash.empty?
+  end
+
+  test "login with valid information" do
+    get login_path
+    post login_path, session: { email: @user.email, password: 'taminhtien1993@@' }
+    # Check right redirect target
+    assert_redirected_to @user
+    # Actually visit target page
+    follow_redirect!
+    assert_template 'users/show'
+    # Verifies the login link disappears
+    assert_select "a[href=?]", login_path, count: 0
+    assert_select "a[href=?]", logout_path
+    assert_select "a[href=?]", user_path(@user)
   end
 end
