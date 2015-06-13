@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:session][:password])
   		# Log user in and redirect to user's show page
   		log_in user
+      remember user
   		# Rails automatically converts it to the route for user's page user_url(user)
   		redirect_to user
   	else
