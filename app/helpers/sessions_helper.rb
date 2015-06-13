@@ -44,7 +44,7 @@ module SessionsHelper
 
   # Forgets a persistent session
   def forget(user)
-    user.forget # Update :remember_digest to
+    user.forget # Update :remember_digest to nil
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
