@@ -12,6 +12,7 @@ module SessionsHelper
 		if (user_id = session[:user_id]) # If session[:user_id] exists
 			@current_user ||= User.find_by(id: user_id)
 		elsif (user_id = cookies.signed[:user_id]) # If user exists in cookies
+      # raise # Generate an exception, if test pass -> this branch is untested
 			user = User.find_by(id: user_id) # Find user_id exists in database
 			if user && user.authenticated?(cookies[:remember_token])
 				log_in user
