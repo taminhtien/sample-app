@@ -3,14 +3,14 @@ class SessionsController < ApplicationController
   end
   def create
   	# find_by method is supported by Active Record
-  	user = User.find_by(email: params[:session][:email].downcase)
-  	if user && user.authenticate(params[:session][:password])
+  	@user = User.find_by(email: params[:session][:email].downcase)
+  	if @user && @user.authenticate(params[:session][:password])
   		# Log user in and redirect to user's show page
-  		log_in user
+  		log_in @user
       # remember user if checkbox is 1 and otherwise
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
   		# Rails automatically converts it to the route for user's page user_url(user)
-  		redirect_to user
+  		redirect_to @user
   	else
   		# Show errors
   		# :danger like a flag, which marks the danger message, display with red block.
