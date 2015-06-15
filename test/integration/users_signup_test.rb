@@ -10,8 +10,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                 password_confirmation:  "bar" }
     end
     assert_template 'users/new'
-    assert_select 'div#<CSS id for error explanation>'
-    assert_select 'div.<CSS class for field with error>'
+    assert_select 'div#error_explanation'
+    assert_select 'div.field_with_errors'
 
   end
 
@@ -24,6 +24,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                             password_confirmation:  "tienta1" }
     end
     assert_template 'users/show'
+    assert_not flash.empty?
     # Assert is_logged_in return 1
     assert is_logged_in?
   end
