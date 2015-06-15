@@ -18,7 +18,12 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-  
+
+  # Action loads the user edit page
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
