@@ -16,6 +16,13 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page])
   end
 
+  # Detroys an user
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
+  end
+
   # Sign up process
   def create
     @user = User.new(user_params)
@@ -65,13 +72,6 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
-    end
-
-    # Detroys an user
-    def destroy
-      User.find(params[:id]).destroy
-      flash[:success] = "User deleted"
-      redirect_to users_url
     end
 
     # Confirms an admin user
