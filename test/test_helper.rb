@@ -15,7 +15,7 @@ class ActiveSupport::TestCase
 
   def log_in_as(user, options = {})
   	# 'password' will be default if the options[:password] is nil
-  	password = options[:password] || 'taminhtien1993@@'
+  	password = options[:password] || 'password'
   	# Respectively with options[:remember_me]
   	remember_me = options[:remember_me] || '1'
   	if integration_test?

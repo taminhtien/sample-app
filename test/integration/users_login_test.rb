@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:tien)
+    @user = users(:michael)
   end
 
   # This test is in order to control the emergence of the flash
@@ -25,7 +25,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test "login with valid information" do
     get login_path
-    post login_path, session: { email: @user.email, password: 'taminhtien1993@@' }
+    post login_path, session: { email: @user.email, password: 'password' }
     # Check right redirect target
     assert_redirected_to @user
     # Actually visit target page
@@ -39,7 +39,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test "login with valid information followed by logout" do
     get login_path
-    post login_path, session: { email: @user.email, password: 'taminhtien1993@@' }
+    post login_path, session: { email: @user.email, password: 'password' }
     assert is_logged_in?
     assert_redirected_to @user
     follow_redirect!

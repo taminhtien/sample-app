@@ -8,16 +8,16 @@
 #  name: MyString
 #  email: MyString
 
-tien:
-  name: Tien
-  email: taminhtien1993@gmail.com
-  password_digest: <%= User.digest('taminhtien1993@@') %>
-  admin: root
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
+  admin: true
 
 archer:
   name: Sterling Archer
-  email: durchess@example.gov
-  password_digest: <% User.digest('password') %>
+  email: duchess@example.gov
+  password_digest: <%= User.digest('password') %>
  
 lana:
   name: Lana Kane
