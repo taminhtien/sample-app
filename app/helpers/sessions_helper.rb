@@ -43,6 +43,11 @@ module SessionsHelper
 		cookies.permanent[:remember_token] = user.remember_token # remember_token attribute
 	end
 
+  # Returns true if the given user is the current user
+  def current_user?(user)
+    user == current_user
+  end
+
   # Forgets a persistent session
   def forget(user)
     user.forget # Update :remember_digest to nil

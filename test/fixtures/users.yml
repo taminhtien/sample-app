@@ -11,3 +11,8 @@ tien:
   name: Tien
   email: taminhtien1993@gmail.com
   password_digest: <%= User.digest('taminhtien1993@@') %>
+
+archer:
+  name: Sterling Archer
+  email: durchess@example.gov
+  password_digest: <% User.digest('password') %>
