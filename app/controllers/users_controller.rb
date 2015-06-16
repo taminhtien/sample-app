@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # The filter will act on edit and update actions
-  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
 
