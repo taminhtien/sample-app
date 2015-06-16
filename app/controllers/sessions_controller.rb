@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       # remember user if checkbox is 1 and otherwise
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
   		# Rails automatically converts it to the route for user's page user_url(user)
-  		redirect_to @user
+  		redirect_back_or @user
   	else
   		# Show errors
   		# :danger like a flag, which marks the danger message, display with red block.
