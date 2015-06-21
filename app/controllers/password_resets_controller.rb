@@ -47,8 +47,17 @@ class PasswordResetsController < ApplicationController
   			redirect_to root_url
   		end
   	end
-  	
+
   	def user_params
   		params.require(:user).permit(:password, :password_confirmation)
+  	end
+
+  	# Checks expiration of reset token
+  	def check_expiration
+  		if @user.password_reset_expired?
+  			flash[:danger] = "Password reset has expired."
+  			redirect_to new_password_reset_url
+  		end
+  		
   	end
 end
