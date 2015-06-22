@@ -56,4 +56,10 @@ class UsersControllerTest < ActionController::TestCase
     end
     assert_redirected_to root_url
   end
+
+  test "should redirect root when visit inactive user's page" do
+  	@other_user.toggle!(:activated)
+  	get :show, id: @other_user
+  	assert_redirected_to root_url
+  end
 end
