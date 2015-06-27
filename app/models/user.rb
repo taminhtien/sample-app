@@ -71,7 +71,15 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
 
+  # Defines a proto-feed
+  # Show user's microposts to home page
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+
+
   private
+
     def downcase_email
       self.email = email.downcase
     end
