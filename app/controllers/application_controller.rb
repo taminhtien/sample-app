@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
 	# Confirm a logged-in user
 	private
+	
 	  def logged_in_user 
 	    unless logged_in?
 	      store_location
