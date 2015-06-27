@@ -77,7 +77,6 @@ class User < ActiveRecord::Base
     Micropost.where("user_id = ?", id)
   end
 
-
   private
 
     def downcase_email
