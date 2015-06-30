@@ -9,6 +9,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   	log_in_as(@user)
   	get root_path
   	assert_select 'div.pagination'
+    assert_select 'input[type=submit]'
   	assert_select 'section.user_info'
   	assert_select 'section.micropost_form'
   	# Invalid submission
@@ -18,9 +19,12 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   	assert_select 'div#error_explanation'
   	# Valid submission
   	content = "This is valid content"
+    picture = fixture_file_upload( 'test/fixtures/rails.png', 'image/png' )
   	assert_difference 'Micropost.count', 1 do
-  		post microposts_path, micropost: { content: content }
+  		post microposts_path, micropost: { content: content, picture: picture }
   	end
+    micropost = assigns(:micropost)
+    assert micropost.picture?
   	assert_redirected_to root_url
   	follow_redirect!
   	assert_match content, response.body
