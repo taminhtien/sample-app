@@ -1,4 +1,4 @@
-class CreateRalationships < ActiveRecord::Migration
+class CreateRelationships < ActiveRecord::Migration
   def change
     create_table :relationships do |t|
       t.integer :follower_id
@@ -9,5 +9,6 @@ class CreateRalationships < ActiveRecord::Migration
     add_index :relationships, :follower_id
     add_index :relationships, :followed_id
     add_index :relationships, [:follower_id, :followed_id], unique: true
+    rename_table :corps, :stores
   end
 end
