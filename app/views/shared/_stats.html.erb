@@ -15,7 +15,7 @@
 	<a href="#">
 		<strong class="stat">
 			<%
-				micropost = pluralize(current_user.microposts.count, "micropost")
+				micropost = pluralize(@user.microposts.count, "micropost")
 			%>
 			<%= micropost.split(' ')[0] %>
 		</strong>
