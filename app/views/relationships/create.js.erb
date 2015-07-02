@@ -1,0 +1,4 @@
+// escape_javascript is needed to escape out the result
+// when inserting HTML in a JavaScript file.
+$("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
+$("#followers").html('<%= @user.followers.count %>');
