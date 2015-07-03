@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
   # Defines a proto-feed
   # Show user's microposts to home page
   def feed
-    Micropost.where("user_id = ?", id)
+    Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
   end
 
   # Follows a user
@@ -101,11 +101,6 @@ class User < ActiveRecord::Base
   # Returns true if the current user is following the other user
   def following?(other_user)
     following.include?(other_user)
-  end
-
-  # Returns the user's status feed
-  def feed
-    Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
   end
 
   private
