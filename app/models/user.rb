@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships
 
   attr_accessor :remember_token, :activation_token, :reset_token
-  
+
   before_save :downcase_email
   before_create :create_activation_digest
   validates :name,    presence: true,
@@ -101,6 +101,11 @@ class User < ActiveRecord::Base
   # Returns true if the current user is following the other user
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  # Returns the user's status feed
+  def feed
+    Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
   end
 
   private
