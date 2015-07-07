@@ -40,14 +40,15 @@
               <li><%= link_to "Log out", logout_path, method: "delete" %></li>
             </ul>
           </li>
+          <% else %>
+            <li><%= link_to "Login", login_path %></li>
+          <% end %>
           <li>
             <%= button_tag(type: 'submit', class: "btn btn-primary btn-tweet") do %>
               <span class="glyphicon glyphicon-pencil tweet" style="color: #fff;"></span> Tweet
             <% end %>
           </li>
-          <% else %>
-            <li><%= link_to "Login", login_path %></li>
-          <% end %>
+
       </ul>
     </div>
       
