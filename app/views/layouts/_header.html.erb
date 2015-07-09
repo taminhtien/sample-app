@@ -1,56 +1,62 @@
-<header class="navbar navbar-fixed-top nav-myheader">
+<header class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-    <div class="logo">
-      <%= link_to image_tag("Twitter_logo_blue.png", size: "20x20"), root_path, id: "logo" %>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <div class="logo">
+        <%= link_to image_tag("Twitter_logo_blue.png", size: "20x20"), root_path, id: "logo" %>
+      </div>
     </div>
-    <div class="menu-left">
-      <ul class="nav navbar-nav navbar-left">
-        <li>
-          <span class="glyphicon glyphicon-home icon"></span>
-          <span><%= link_to "Home", root_path %></span>
-        </li>
-        <% if logged_in? %>
+    
+    <div class="navbar-collapse collapse" id="menu">
+        <ul class="nav navbar-nav navbar-left">
           <li>
-            <span class="glyphicon glyphicon-bell icon"></span>
-            <span> <%= link_to "Notifications", "#" %></span>
-           </li>
-          <li>
-            <span class="glyphicon glyphicon-envelope icon"></span>
-            <span><%= link_to "Messages", "#" %></span>
+            <span class="glyphicon glyphicon-home icon"></span>
+            <span><%= link_to "Home", root_path %></span>
           </li>
-          <li>
-            <span class="glyphicon glyphicon-user icon"></span>
-            <span><%= link_to "Users", users_path %></span>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="menu-right">
-      <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= gravatar_for(current_user, size: 30) %>
-              <%= current_user.name %> <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-              <li class="divider"></li>
-              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-            </ul>
-          </li>
-          <li>
-            <%= button_tag(type: 'submit', class: "btn btn-primary btn-tweet") do %>
-              <span class="glyphicon glyphicon-pencil tweet" style="color: #fff;"></span> Tweet
-            <% end %>
-          </li>
-          <% else %>
-            <li><%= link_to "Login", login_path %></li>
+          <% if logged_in? %>
+            <li>
+              <span class="glyphicon glyphicon-bell icon"></span>
+              <span> <%= link_to "Notifications", "#" %></span>
+             </li>
+            <li>
+              <span class="glyphicon glyphicon-envelope icon"></span>
+              <span><%= link_to "Messages", "#" %></span>
+            </li>
+            <li>
+              <span class="glyphicon glyphicon-user icon"></span>
+              <span><%= link_to "Users", users_path %></span>
+            </li>
           <% end %>
-      </ul>
-    </div>
-      
-      
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if logged_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= gravatar_for(current_user, size: 30) %>
+                <%= current_user.name %> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+              </ul>
+            </li>
+            <li>
+              <%= button_tag(type: 'submit', class: "btn btn-primary btn-tweet") do %>
+                <span class="glyphicon glyphicon-pencil tweet" style="color: #fff;"></span> Tweet
+            </li>
+            <% end %>
+            <% else %>
+              <li><%= link_to "Login", login_path %></li>
+          <% end %>
+        </ul>
+      </div>
   </div>
 </header>
