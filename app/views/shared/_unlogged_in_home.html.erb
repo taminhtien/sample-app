@@ -1,10 +1,28 @@
-<div class="center jumbotron">
-	  <h1>Welcome to the Home Page</h1>
-	  <h2>
-	    This is the home page for the
-	    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-	    sample application.
-	  </h2>
-	  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="welcome-content">
+				<h1>Welcome to Twitter</h1>
+		  	<h3>
+		    	Connect with your friends — and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.
+		  	</h3>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="log-in-form">
+				<form role="form">
+			  <div class="form-group">
+			    <input type="text" id="username" name="username" class="form-control">
+			  </div>
+			  <div class="form-group">
+			    <input type="password" id="password" name="password" class="form-control">
+			 	</div>
+			  <input type="submit" value="Login" class="btn btn-primary">
+			</form>	
+			</div>
+			<div class="sign-up-form">
+				<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+			</div>
+		</div>
 	</div>
-<!-- <%= link_to image_tag("rails.png", alt: "Rails logo"), 'http://rubyonrails.org/' %> -->
+</div>
