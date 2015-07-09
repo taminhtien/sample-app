@@ -1,28 +1,36 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-8">
-			<div class="welcome-content">
-				<h1>Welcome to Twitter</h1>
-		  	<h3>
-		    	Connect with your friends — and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.
-		  	</h3>
+		<div class="welcome">
+			<div class="col-md-8">
+				<div class="welcome-content">
+					<h1>Welcome to Twitter</h1>
+			  	<h3>
+			    	Connect with your friends — and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.
+			  	</h3>
+			  	<br>
+			  	<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+				</div>
 			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="log-in-form">
-				<form role="form">
-			  <div class="form-group">
-			    <input type="text" id="username" name="username" class="form-control">
-			  </div>
-			  <div class="form-group">
-			    <input type="password" id="password" name="password" class="form-control">
-			 	</div>
-			  <input type="submit" value="Login" class="btn btn-primary">
-			</form>	
+			<div class="col-md-4">
+				<div class="log-in-form">
+					<h5>
+						<strong>Log in </strong>
+					</h5>
+					<hr>
+						<%= form_for(:session, url: login_path) do |f| %>
+							<%= f.email_field :email, class: 'form-control' %>
+							<%= f.password_field :password, class: 'form-control' %>
+							<div class="remem-fotget">
+								<%= f.label :remember_me, class: "checkbox" do %>
+								<%= f.check_box :remember_me %>
+								<span>Remember me</span>
+								<% end %>
+								<%= link_to "Forgot password?", new_password_reset_path, class: "forget-pass" %>
+							</div>
+						<%= f.submit "Log in", class: "btn btn-primary btn-login" %>
+					<% end %>
+				</div>
 			</div>
-			<div class="sign-up-form">
-				<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-			</div>
-		</div>
-	</div>
+		</div>	
+	</div>	
 </div>

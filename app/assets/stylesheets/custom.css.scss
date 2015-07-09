@@ -14,6 +14,43 @@ body {
   background-repeat: no-repeat;
 }
 
+@mixin box {
+  background: #fff;
+  padding: 10px 10px;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border: 0px solid #000000;
+}
+
+.welcome {
+  margin-top: 80px;
+
+  .welcome-content {
+    color: #333;
+  }
+
+  .log-in-form {
+    @include box;
+    .btn-login {
+      margin-top: 10px;
+    }
+  }
+  
+  .sign-up-form { 
+    margin-top: 20px;
+    @include box
+  }
+
+  h1 {
+    text-align: left;
+  }
+
+  h5 {
+    line-height: 0px;
+  }
+}
+
 section {
   overflow: auto;
 }
@@ -264,11 +301,11 @@ input {
 
 /* form */
 .checkbox {
-  margin-top: -10px;
-  margin-bottom: 10px;
+  font-weight: normal; 
+  display: inline;
+  margin-bottom: -20px;
   span {
     margin-left: 20px;
-    font-weight: nomal;
   }
 }
 
