@@ -1,36 +1,37 @@
 <% provide(:title, @user.name) %>
-
 <div class="container-fluid">
     <div class="row">
         <% cover = "image_large_2x.jpg" %>
         <%= image_tag(cover, class: "cover") %>    
     </div>
+    <div class="row stats-row">
+      <div class="col-md-offset-4">
+        <%= render 'shared/stats' %>        
+      </div>
+    </div>
 </div>
 
-</div>
-</div>
 <div class="container">
-    <div class="row">
-        <aside class="col-md-4">
-            <section class="user_info">
-                <h1>
-                    <%= gravatar_for(@user, size: 80) %>
-                    <%= @user.name %>
-                </h1>
-            </section>
-            <section class="stats">
-                <%= render 'shared/stats' %>
-            </section>
-        </aside>
-        <div class="col-md-8">
-            <%= render 'follow_form' if logged_in? %>
-        	<% if @user.microposts.any? %>
-        		<h3>Microposts (<%= @user.microposts.count %>)</h3>
-        		<ol class="microposts">
-        			<%= render @microposts %>
-        		</ol>
-        		<%= will_paginate @microposts %>
-        	<% end %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <div class="info-avatar">
+          <%= avatar_for(@user) %>
         </div>
+        <div class="infor">
+          <h1><%= link_to "#{@user.name}", @user %></h1>
+        </div>
+      </section>
+    </aside>
+    <div class="col-md-8 col-content">
+      <%= render 'follow_form' if logged_in? %>
+      <% if @user.microposts.any? %>
+      	<h3>Microposts (<%= @user.microposts.count %>)</h3>
+      	<ol class="microposts">
+      	 <%= render @microposts %>
+      	</ol>
+        <%= will_paginate @microposts %>
+      <% end %>
     </div>
+  </div>
 </div>
