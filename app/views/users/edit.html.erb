@@ -3,13 +3,17 @@
 
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<%= form_for(@user) do |f| %>
+		<%= form_for(@user, html: { multipart: true }) do |f| %>
 			<%= render 'fields', f: f %>
+			<div class="change-avatar">
+				<%= gravatar_for(@user, size: 80) %>
+				<%= f.file_field :avatar %>
+			</div>
 			<%= f.submit "Save changes", class: "btn btn-primary" %>
 		<% end %>
-	<div class="gravatar_edit">
-		<%= gravatar_for(@user, size: 80) %>
-		<a href="http://gravatar.com/emails" target="_blank">Change</a>
-	</div>
+		<!-- <div class="gravatar_edit">
+			<%= gravatar_for(@user, size: 80) %>
+			<a href="http://gravatar.com/emails" target="_blank">Change</a>
+		</div> -->
 	</div>
 </div>
