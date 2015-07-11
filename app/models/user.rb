@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6}, allow_nil: true
 
+  mount_uploader :avatar, PictureUploader
   class << self
     # Returns the hash digest of the given string
     def digest(string)
