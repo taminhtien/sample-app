@@ -16,7 +16,7 @@
     <aside class="col-md-4">
       <section class="user_info">
         <div class="info-avatar">
-            <%= image_tag(current_user.avatar.url, class: "avatar-cover") %>
+            <%= image_tag(avatar(@user), class: "avatar-cover") %>
         </div>
         <div class="infor">
             <h1><%= link_to "#{@user.name}", @user %></h1>
