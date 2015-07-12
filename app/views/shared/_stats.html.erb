@@ -12,7 +12,7 @@
 			<%= @user.followers.count %>
 		</strong>
 	</a>
-	<a href="#">
+	<a href="<%= user_path(@user) %>">
 		<% micropost = pluralize(@user.microposts.count, "micropost") %>
 		<%= micropost.split(' ')[1].upcase %>
 		<strong class="stat">
