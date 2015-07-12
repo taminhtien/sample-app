@@ -305,12 +305,7 @@ aside {
   @include box;
 }
 
-.log-in-box {
-  @include box;
-  margin-top: 15px;
-}
-
-.sign-up-box {
+.box {
   @include box;
   margin-top: 15px;
   padding-bottom: 15px;

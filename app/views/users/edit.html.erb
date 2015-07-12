@@ -1,8 +1,8 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
-
 <div class="row">
-	<div class="col-md-6 col-md-offset-3 edit-box">
+	<div class="col-md-6 col-md-offset-3 box">
+		<h1>Update your profile</h1>
+		<hr>
 		<%= form_for(@user, html: { multipart: true }) do |f| %>
 			<%= render 'fields', f: f %>
 			<div class="change-avatar">

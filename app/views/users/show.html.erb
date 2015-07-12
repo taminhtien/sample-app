@@ -30,7 +30,9 @@
       	<ol class="microposts">
       	 <%= render @microposts %>
       	</ol>
-        <%= will_paginate @microposts %>
+        <div class="center">
+          <%= will_paginate @microposts %>  
+        </div>
       <% end %>
     </div>
   </div>
