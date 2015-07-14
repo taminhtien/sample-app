@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
   has_many :microposts, dependent: :destroy
 
   has_many :active_relationships,   class_name: "Relationship",
@@ -114,7 +119,7 @@ class User < ActiveRecord::Base
     end
 
     def create_activation_digest
-        self.activation_token = User.new_token # Save as a class User variable
-        self.activation_digest = User.digest(activation_token) # Save into the database
+      self.activation_token = User.new_token # Save as a class User variable
+      self.activation_digest = User.digest(activation_token) # Save into the database
     end
 end
