@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-  devise_for :users
+  devise_for :users, class_name: 'FormUser'
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'sessions/new'
