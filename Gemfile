@@ -18,6 +18,18 @@ gem 'turbolinks',             '2.3.0'
 gem 'jbuilder',               '2.2.3'
 gem 'sdoc',                   '0.4.0', group: :doc
 
+# Sign up by networking society gems 
+# Two main gems is devise and omniauth
+
+gem 'devise', '~> 3.4'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-instagram'
+gem 'twitter'
+gem 'instagram'
+gem 'omniauth-google-oauth2'
+gem 'google-api-client', require: 'google/api_client'
 
 group :development, :test do
   gem 'sqlite3',              '1.3.9'
