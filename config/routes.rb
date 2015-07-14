@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   devise_for :users
   get 'password_resets/new'
   get 'password_resets/edit'
